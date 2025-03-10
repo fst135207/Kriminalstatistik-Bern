@@ -7,7 +7,7 @@ export default function Home() {
 
       <p>Interaktive Karte mit Heatmaps</p>
 
-      <p>Zeitreihen- und Trenddiagramme</p>
+      <p>Zeitreihen- und Trenddiagramme</p> 
 
       <p>Filter und Vergleichsfunktionen</p>
 
