@@ -3,6 +3,8 @@ Wir beginen zuerst mit einem GET-Request von der API-Schnittstelle von Swisstopo
 https://data.opendatasoft.com/explore/dataset/georef-switzerland-kanton
 """
 import requests
+import json
+import plotly.express as px
 
 def get_map_data():
     url = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-switzerland-kanton&q=kan_name%3A%22Bern%22&format=geojson"
@@ -25,11 +27,17 @@ def get_map_data():
         return None
     
 
+def save_data_to_geojson(map_data, filename):
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(map_data, f, ensure_ascii=False, indent=4)
+        print(f"GeoJSON daten erfolgreich in {filename} gespeichert")
+
 def main():
     map_data = get_map_data()
 
     if map_data:
         print("Map Daten erfolgreich erhalten")
+        save_data_to_geojson(map_data, "bern_map_data.geojson")
     else:
         print("Keine Daten erhalten...")
 
